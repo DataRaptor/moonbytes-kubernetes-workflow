@@ -1,0 +1,16 @@
+{
+  "name": "solana",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-mocha -p ./tsconfig.json ./tests/**/*.spec.ts",
+    "prettier": "npx prettier --write .",
+    "dev": "nodemon --config nodemon.json src/main.ts | pino-pretty",
+    "dev:debug": "nodemon --config nodemon.json --inspect-brk src/main.ts | pino-pretty",
+    "build": "tsc",
+    "start": "node ./build/src/main.js | pino-pretty"
+  },
+  "author": "",
+  "license": "ISC"
+}

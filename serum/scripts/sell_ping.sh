@@ -1,0 +1,1 @@
+python3 ./scripts/sell_ping.py

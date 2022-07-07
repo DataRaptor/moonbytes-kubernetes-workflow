@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml -o ./kubernetes -c --multiple-container-mode
+    kompose.service.group: core
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: core
+  name: turbine
+spec:
+  ports:
+    - name: "3201"
+      port: 3201
+      targetPort: 4201
+    - name: "3202"
+      port: 3202
+      targetPort: 4201
+    - name: "3203"
+      port: 3203
+      targetPort: 4201
+    - name: "3204"
+      port: 3204
+      targetPort: 4201
+    - name: "3205"
+      port: 3205
+      targetPort: 4201
+    - name: "3206"
+      port: 3206
+      targetPort: 4201
+    - name: "3207"
+      port: 3207
+      targetPort: 4201
+    - name: "3208"
+      port: 3208
+      targetPort: 4201
+    - name: "3209"
+      port: 3209
+      targetPort: 4201
+    - name: "3210"
+      port: 3210
+      targetPort: 4201
+  selector:
+    io.kompose.service: core
+status:
+  loadBalancer: {}

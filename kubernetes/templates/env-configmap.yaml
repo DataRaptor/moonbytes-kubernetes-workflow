@@ -1,0 +1,38 @@
+apiVersion: v1
+data:
+  DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: dR-dqUJTS6tz-PdkMh6vRxgCY3qwNAzGkb_UqqymCaVothz8NIziCkhUSfXIcw61A6EvfFa9pB8vTvbaRzYk3A==
+  DOCKER_INFLUXDB_INIT_BUCKET: gargantuan-prod
+  DOCKER_INFLUXDB_INIT_ORG: gradient
+  DOCKER_INFLUXDB_INIT_USERNAME: root
+  DOCKER_INFLUXDB_PASSWORD: dR-dqUJTS6tz-PdkMh6vRxgCY3qwNAzGkb_UqqymCaVothz8NIziCkhUSfXIcw61A6EvfFa9pB8vTvbaRzYk3A==
+  ENABLE_ETL_MAGIC_EDEN_COLLECTION_MARKET: "true"
+  ENABLE_ETL_MAGIC_EDEN_COLLECTION_XRAY: "true"
+  ENABLE_ETL_MAGIC_EDEN_GLOBAL: "true"
+  ENABLE_ETL_SERUM_MARKET: "true"
+  ENABLE_ETL_SOLANA_GLOBAL: "true"
+  ENABLE_ETL_SOLANA_SPL_TOKEN: "true"
+  ENABLE_JOB_UPDATE_MAGIC_EDEN_COLLECTIONS: "true"
+  ENABLE_JOB_UPDATE_SERUM_MARKETS: "true"
+  ENABLE_JOB_UPDATE_SOLANA_SPL_TOKENS: "true"
+  ETL_MAGIC_EDEN_COLLECTION_MARKET_URL: http://localhost:4208
+  ETL_MAGIC_EDEN_COLLECTION_XRAY_URL: http://localhost:4207
+  ETL_MAGIC_EDEN_GLOBAL_URL: http://localhost:4206
+  ETL_SERUM_MARKET_URL: http://localhost:4205
+  ETL_SOLANA_GLOBAL_URL: http://localhost:4204
+  INFLUXDB_BUCKET: gargantuan-prod
+  INFLUXDB_HOST: http://localhost:8086
+  INFLUXDB_ORG: gradient
+  INFLUXDB_TOKEN: dR-dqUJTS6tz-PdkMh6vRxgCY3qwNAzGkb_UqqymCaVothz8NIziCkhUSfXIcw61A6EvfFa9pB8vTvbaRzYk3A==
+  LOG_LEVEL: info
+  MONGO_DB: gargantuan-prod
+  MONGO_URI: mongodb://root:rootpassword@mongodb:27017/gradient-gargantuan?ssl=false&authSource=admin
+  SERUM_URL: http://localhost:4203
+  SOLANA_URL: http://localhost:42042
+  STATE_URL: http://localhost:4202
+  TURBINE_URL: http://localhost:4201
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: core-env
+  name: env

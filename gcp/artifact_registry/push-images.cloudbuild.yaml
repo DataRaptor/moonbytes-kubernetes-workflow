@@ -1,0 +1,149 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/api:${_APP_VERSION}',
+        './api',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/client:${_APP_VERSION}',
+        './client',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-collection-market:${_APP_VERSION}',
+        './etls/etl-magic-eden-collection-market',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-collection-xray:${_APP_VERSION}',
+        './etls/etl-magic-eden-collection-xray',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-global:${_APP_VERSION}',
+        './etls/etl-magic-eden-global',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/etl-serum-market:${_APP_VERSION}',
+        './etls/etl-serum-market',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/etl-solana-global:${_APP_VERSION}',
+        './etls/etl-solana-global',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/state:${_APP_VERSION}',
+        './state',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/serum:${_APP_VERSION}',
+        './serum',
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_GCP_PROJECT}/gargantuan/turbine:${_APP_VERSION}',
+        './turbine',
+      ]
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/api:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/client:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-collection-market:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-collection-xray:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-global:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-serum-market:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-solana-global:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/state:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/serum:${_APP_VERSION}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'gcr.io/${_GCP_PROJECT}/gargantuan/turbine:${_APP_VERSION}']
+
+
+images:
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/api:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/client:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-collection-market:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-collection-xray:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-magic-eden-global:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-serum-market:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/etl-solana-global:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/state:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/serum:${_APP_VERSION}'
+  - 'gcr.io/${_GCP_PROJECT}/gargantuan/turbine:${_APP_VERSION}'
+
+timeout: 1800s
+
+# availableSecrets:
+#   secretManager:
+#   - versionName: projects/PROJECT_ID/secrets/GH_TOKEN_SECRET_NAME/versions/latest
+#     env: 'API_VERSION'
+#   - versionName: projects/PROJECT_ID/secrets/GH_TOKEN_SECRET_NAME/versions/latest
+#     env: 'USERNAME'
+
+substitutions:
+  _GCP_PROJECT: 'gradient-labs'
+  _GCP_REGION: 'us-east1'
+  _APP_VERSION: '0.2.1'
+
+

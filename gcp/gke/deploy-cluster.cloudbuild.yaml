@@ -1,0 +1,13 @@
+steps:
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --project=${_PROJECT_ID}
+  - --filename=${_KUBERNETES_RESOURCE_FILE}
+  - --location=${_REGION}
+  - --cluster=${_CLUSTER}
+substitutions:
+  _PROJECT_ID: gradient-labs
+  _REGION: us-east1-b
+  _CLUSTER: gargantuan-cluster
+  _KUBERNETES_RESOURCE_FILE: ./kubernetes/templates

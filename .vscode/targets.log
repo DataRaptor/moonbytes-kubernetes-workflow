@@ -1,0 +1,497 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `all'.  Stop.
+
+
+# Make data base, printed on Wed Jul  6 22:47:27 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/spectraltechnologies/Desktop/moonbytes-kubernetes-workflow
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/kn/7b6hxsg10mx1f89mwtjrk87c0000gq/T/vscode-ipc-30df8f5a-5a5d-4652-9efa-2949eba7b9bc.sock
+# environment
+VSCODE_CWD = /
+# environment
+PATH = /usr/bin:/bin:/usr/sbin:/sbin:/Users/spectraltechnologies/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin:/Users/spectraltechnologies/google-cloud-sdk/bin
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+CLOUDSDK_METRICS_ENVIRONMENT = cloudcode.vscode
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.OPF3ngXZ1u/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+CLOUDSDK_METRICS_ENVIRONMENT_VERSION = 1.18.3
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/spectraltechnologies/Desktop/moonbytes-kubernetes-workflow
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/spectraltechnologies
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/spectraltechnologies/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+LOGNAME = spectraltechnologies
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = spectraltechnologies
+# makefile
+.DEFAULT_GOAL := default
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/kn/7b6hxsg10mx1f89mwtjrk87c0000gq/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/spectraltechnologies/Library/Application Support/Code/1.68.1-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.27627714.27627720
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F7:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 64846
+# variable set hash-table stats:
+# Load=64/1024=6%, Rehash=0, Collisions=1/88=1%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777231, inode 28362553): 22 files, no impossibilities.
+
+# 22 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+update-kubernetes:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 55):
+	make build-docker-images
+	make push-docker-images-to-cluster-registry
+	make uninstall-helm-charts
+	make install-helm-charts
+	
+
+setup:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 11):
+	make install-kompose
+	make install-kind
+	
+
+# Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+.PHONY: start new setup workers kill clean purge dev kubernetes update-kubernetes install-kompose install-kind helm production-env development-env create-kubernetes-cluster build-docker-images create-cluster-docker-image-registry push-docker-images-to-cluster-registry list-docker-images-loaded-to-cluster install-helm-charts uninstall-helm-charts get-cluster-pods watch-kubernetes get-cluster-services
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 42):
+	docker-compose up --build --remove-orphans
+	
+
+production-env:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 79):
+	python3 ./scripts/toggle_docker_compose_to_production.py
+	
+
+create-cluster-docker-image-registry:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 104):
+	./docker/create_image_registry.sh
+	
+
+workers:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 16):
+	python3 ./workers/service_discovery/main.py & 
+	
+
+new:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 6):
+	make clean
+	make dev
+	
+
+install-kind:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 68):
+	go install sigs.k8s.io/kind@v0.12.0 
+	
+
+watch-kubernetes:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 148):
+	watch make get-cluster-pods
+	
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-24 13:52:55
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+start:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+helm:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 72):
+	make production-env
+	kompose convert -f docker-compose.yaml -o ./kubernetes -c --multiple-container-mode
+	make development-env
+	python3 ./scripts/apply_helm_values.py
+	
+
+default:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 2):
+	make dev
+	
+
+list-docker-images-loaded-to-cluster:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 132):
+	docker exec -it kind-control-plane crictl images
+	
+
+build-docker-images:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+ 
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 91):
+	docker build -f ./api/Dockerfile ./api -t gargantuan/api
+	docker build -f ./client/Dockerfile ./client -t gargantuan/client
+	docker build -f ./turbine/Dockerfile ./turbine -t gargantuan/turbine
+	docker build -f ./state/Dockerfile ./state -t gargantuan/state
+	docker build -f ./serum/Dockerfile ./serum -t gargantuan/serum
+	docker build -f ./etls/etl-magic-eden-collection-market/Dockerfile ./etls/etl-magic-eden-collection-market -t gargantuan/etl-magic-eden-collection-market
+	docker build -f ./etls/etl-magic-eden-collection-xray/Dockerfile ./etls/etl-magic-eden-collection-xray -t gargantuan/etl-magic-eden-collection-xray
+	docker build -f ./etls/etl-magic-eden-global/Dockerfile ./etls/etl-magic-eden-global -t gargantuan/etl-magic-eden-global
+	docker build -f ./etls/etl-serum-market/Dockerfile ./etls/etl-serum-market -t gargantuan/etl-serum-market
+	docker build -f ./etls/etl-solana-global/Dockerfile ./etls/etl-solana-global -t gargantuan/etl-solana-global
+	
+
+purge:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 31):
+	# make uninstall-helm-charts
+	docker container prune -f 
+	docker image prune -f -a
+	docker system prune -f -a
+	docker volume prune -f 
+	
+
+push-docker-images-to-cluster-registry:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 108):
+	docker tag gargantuan/api localhost:5001/gargantuan/api
+	docker tag gargantuan/client localhost:5001/gargantuan/client
+	docker tag gargantuan/turbine localhost:5001/gargantuan/turbine
+	docker tag gargantuan/state localhost:5001/gargantuan/state
+	docker tag gargantuan/serum localhost:5001/gargantuan/serum
+	docker tag gargantuan/etl-magic-eden-collection-market localhost:5001/gargantuan/etl-magic-eden-collection-market 
+	docker tag gargantuan/etl-magic-eden-collection-xray localhost:5001/gargantuan/etl-magic-eden-collection-xray 
+	docker tag gargantuan/etl-magic-eden-global localhost:5001/gargantuan/etl-magic-eden-global 
+	docker tag gargantuan/etl-serum-market localhost:5001/gargantuan/etl-serum-market 
+	docker tag gargantuan/etl-solana-global localhost:5001/gargantuan/etl-solana-global 
+	docker push localhost:5001/gargantuan/api
+	docker push localhost:5001/gargantuan/client
+	docker push localhost:5001/gargantuan/turbine
+	docker push localhost:5001/gargantuan/state
+	docker push localhost:5001/gargantuan/serum
+	docker push localhost:5001/gargantuan/etl-magic-eden-collection-market
+	docker push localhost:5001/gargantuan/etl-magic-eden-collection-xray 
+	docker push localhost:5001/gargantuan/etl-magic-eden-global 
+	docker push localhost:5001/gargantuan/etl-serum-market 
+	docker push localhost:5001/gargantuan/etl-solana-global 
+	
+
+get-cluster-services:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 152):
+	kubectl get services
+	
+
+create-kubernetes-cluster:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 87):
+	kind create cluster
+	
+
+install-kompose:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 62):
+	curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-darwin-amd64 -o kompose
+	chmod +x kompose
+	sudo mv ./kompose /usr/local/bin/kompose
+	
+
+dev:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 39):
+	docker-compose up --build --remove-orphans
+	
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+kill:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 20):
+	docker kill $(docker ps -q)
+	
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 24):
+	docker container prune -f 
+	docker image prune -f
+	docker system prune -f
+	docker volume prune -f 
+	
+
+development-env:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 83):
+	python3 ./scripts/toggle_docker_compose_to_development.py
+	
+
+kubernetes:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 47):
+	# make create-kubernetes-cluster
+	make build-docker-images
+	make create-cluster-docker-image-registry
+	make push-docker-images-to-cluster-registry
+	make install-helm-charts
+	
+
+install-helm-charts:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 136):
+	helm install gargantuan ./kubernetes
+	
+
+uninstall-helm-charts:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 140):
+	helm uninstall gargantuan
+	
+
+get-cluster-pods:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 144):
+	kubectl get pods
+	
+
+# files hash-table stats:
+# Load=31/1024=3%, Rehash=0, Collisions=2/92=2%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Wed Jul  6 22:47:27 2022
+
+ 

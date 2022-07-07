@@ -1,0 +1,267 @@
+version: "3"
+services:
+  # client:
+  #   container_name: client
+  #   image: localhost:5001/gargantuan/client
+  #   labels: 
+  #     kompose.service.type: nodeport
+  #     kompose.service.expose: "true"
+  #   build:
+  #     context: ./client
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3001:8080
+  #   networks:
+  #     - gradient-network
+  #   env_file:
+  #     - ./.env
+  api:
+    container_name: api
+#    image: gcr.io/gradient-labs/gargantuan/api:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.type: nodeport
+      # kompose.service.expose: "true"
+      kompose.service.group: core
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    networks:
+      - gradient-network
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      - turbine
+  turbine:
+    container_name: turbine
+#    image: gcr.io/gradient-labs/gargantuan/turbine:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.group: core
+    build:
+      context: ./turbine
+      dockerfile: Dockerfile
+    ports:
+      - 3201-3210:4201
+    networks:
+      - gradient-network
+    env_file:
+      - ./.env
+    depends_on:
+      - etl-magic-eden-collection-market
+      - etl-magic-eden-collection-xray
+      - etl-magic-eden-global
+      - etl-serum-market
+      - etl-solana-global
+    restart: always
+  state:
+    container_name: state
+#    image: gcr.io/gradient-labs/gargantuan/state:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.group: core
+    build:
+      context: ./state
+      dockerfile: Dockerfile
+    ports:
+      - 4202:4202
+    networks:
+      - gradient-network
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      - mongodb
+      - influxdb
+  serum:
+    container_name: serum
+#    image: gcr.io/gradient-labs/gargantuan/serum:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.group: core
+    build:
+      context: ./serum
+      dockerfile: Dockerfile
+    ports:
+      - 4203:4203
+    networks:
+      - gradient-network
+    restart: always
+  etl-solana-global:
+    container_name: etl-solana-global
+#    image: gcr.io/gradient-labs/gargantuan/etl-solana-global:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.group: core
+    build:
+      context: ./etls/etl-solana-global
+      dockerfile: Dockerfile
+    ports:
+      - 7000:4204
+    networks:
+      - gradient-network
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      - state
+  etl-serum-market:
+    container_name: etl-serum-market
+#    image: gcr.io/gradient-labs/gargantuan/etl-serum-market:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.group: core
+    build:
+      context: ./etls/etl-serum-market
+      dockerfile: Dockerfile
+    ports:
+      - 7001:4205
+    networks:
+      - gradient-network
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      - serum
+      - state
+  etl-magic-eden-global:
+    container_name: etl-magic-eden-global
+#    image: gcr.io/gradient-labs/gargantuan/etl-magic-eden-global:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.group: core
+    build:
+      context: ./etls/etl-magic-eden-global
+      dockerfile: Dockerfile
+    ports:
+      - 7002:4206
+    networks:
+      - gradient-network
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      - state
+  etl-magic-eden-collection-xray:
+    container_name: etl-magic-eden-collection-xray
+#    image: gcr.io/gradient-labs/gargantuan/etl-magic-eden-collection-xray:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.group: core
+    build:
+      context: ./etls/etl-magic-eden-collection-xray
+      dockerfile: Dockerfile
+    ports:
+      - 7003:4207
+    networks:
+      - gradient-network
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      - state
+  etl-magic-eden-collection-market:
+    container_name: etl-magic-eden-collection-market
+#    image: gcr.io/gradient-labs/gargantuan/etl-magic-eden-collection-market:{{ .Values.APP_VERSION }}
+    labels: 
+      kompose.service.group: core
+    build:
+      context: ./etls/etl-magic-eden-collection-market
+      dockerfile: Dockerfile
+    ports:
+      - 7004:4208
+    networks:
+      - gradient-network
+    environment:
+      INFLUXDB_HOST: http://influxdb:8086
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      - state
+  influxdb:
+    container_name: influxdb
+    labels: 
+      kompose.service.group: core
+    image: influxdb:latest
+    ports:
+      - 8086:8086
+    volumes:
+      - ./db/influxdb-storage:/var/lib/influxdb
+    environment:
+      INFLUXDB_HOST: http://influxdb:8086
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: root
+      DOCKER_INFLUXDB_INIT_PASSWORD: rootpassword
+      DOCKER_INFLUXDB_INIT_ORG: gradient
+      DOCKER_INFLUXDB_INIT_BUCKET: gargantuan-prod
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: dR-dqUJTS6tz-PdkMh6vRxgCY3qwNAzGkb_UqqymCaVothz8NIziCkhUSfXIcw61A6EvfFa9pB8vTvbaRzYk3A==
+      INFLUXDB_HTTP_LOG_ENABLED: "false"
+    env_file:
+      - ./.env
+    networks:
+      - gradient-network
+    restart: always
+  # prometheus:
+  #   container_name: prometheus
+  #   image: prom/prometheus:latest
+  #    labels: 
+  #      kompose.service.group: core
+  #   volumes:
+  #     - ./telemetry/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  #   ports:
+  #     - 9090:9090
+  #   networks:
+  #     - gradient-network
+  #   restart: always
+  #   depends_on:
+  #     - state
+  # grafana:
+  #   container_name: grafana
+  #   labels: 
+  #     kompose.service.group: core#   
+  #   image: grafana/grafana-oss:latest
+  #   volumes:
+  #     - ./telemetry/grafana/grafana.ini:/etc/grafana/grafana.ini
+  #     - ./telemetry/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
+  #   ports:
+  #     - 3000:3000
+  #   networks:
+  #     - gradient-network
+  #   restart: always
+  #   depends_on:
+  #     - prometheus
+  mongodb:
+    container_name: mongodb
+    labels: 
+      kompose.service.group: core
+    image: mongo:latest
+    command: --quiet
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+      MONGO_INITDB_DATABASE: gargantuan
+    ports:
+      - 27017:27017
+    networks:
+      - gradient-network
+    volumes:
+      - ./db/mongodb-storage:/data/db
+    restart: always
+  mongo-express:
+    container_name: mongodb-express
+    labels: 
+      kompose.service.group: core
+    image: mongo-express
+    restart: always
+    ports:
+      - 8087:8081
+    networks:
+      - gradient-network
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: rootpassword
+      ME_CONFIG_MONGODB_URL: mongodb://root:rootpassword@mongodb:27017/
+    depends_on:
+      - mongodb
+networks:
+  gradient-network:
+    driver: bridge
+volumes:
+  influxdb-storage:
+  mongodb-storage:

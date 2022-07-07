@@ -1,0 +1,1 @@
+python3 ./scripts/buy_ping.py

@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
     <a>
-        <img alt="Solana" src="https://avatars.githubusercontent.com/u/104286117?s=200&v=4" width="100"/>
+        <img src="https://avatars.githubusercontent.com/u/104286117?s=200&v=4" width="100"/>
     </a>
 </p>
 <h1 align="center"> Moonbytes </h1>

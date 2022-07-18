@@ -10,7 +10,7 @@
 
 # ⚫ moonbytes-gargantuan
 
-## Notice: This documentation is a little hold and should be updated soon.
+## Notice: This documentation is a little old and should be updated soon.
 
 ## Overview
 
